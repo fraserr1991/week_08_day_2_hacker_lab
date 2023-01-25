@@ -1,8 +1,10 @@
 import React, {useState, useEffect} from 'react'
 import StoryList from '../components/StoryList'
+
 const MainContainer = () => {
     const [storiesId, setStoriesId] = useState([])
     const [storyTitles, setStoryTitles] = useState([])
+    const [searchText, setSearchText] = useState("")
     // const [limitedStories, setLimitedStories] = useState([])
 
     useEffect(() => {
@@ -36,7 +38,13 @@ const MainContainer = () => {
     // setLimitedStories(stories.slice(0,19))
 
     return (
-       <StoryList storiesId={storiesId} storyTitles={storyTitles} />
+        <>
+        <input
+        type="text"
+        value={searchText}
+        onChange={e => setSearchText(e.target.value)}/>
+       <StoryList storiesId={storiesId} storyTitles={storyTitles} searchText={searchText} />
+       </>
     )
 }
 
